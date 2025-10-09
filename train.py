@@ -143,6 +143,11 @@ def main(args):
             model.train()
             src, trg_in, trg_out, src_pad_mask, trg_pad_mask = make_batch(x=sample['src_tokens'],
                                                                            y=sample['tgt_tokens'])
+
+            # move all tensors to GPU if cuda is enabled
+            if args.cuda:
+                src, trg_in, trg_out = src.to(device), trg_in.to(device), trg_out.to(device)
+                src_pad_mask, trg_pad_mask = src_pad_mask.to(device), trg_pad_mask.to(device)
             
             output = model(src, src_pad_mask, trg_in, trg_pad_mask).to(device)
 
