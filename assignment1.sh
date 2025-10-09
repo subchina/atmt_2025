@@ -51,6 +51,7 @@ python train.py \
     --max-seq-len 300 \
     --n-encoder-layers 3 \
     --n-decoder-layers 3 
+    --nvidia-smi
 
 # TRANSLATE
 python translate.py \
