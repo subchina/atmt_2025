@@ -97,6 +97,7 @@ def main(args):
         criterion = criterion.cuda()
 
     device = torch.device("cuda" if args.cuda else "cpu")
+    print(device)
     
     
     # Instantiate optimizer and learning rate scheduler
