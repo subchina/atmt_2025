@@ -19,5 +19,8 @@ python translate.py \
     --src-tokenizer cz-en/tokenizers/cz-bpe-8000.model \
     --tgt-tokenizer cz-en/tokenizers/en-bpe-8000.model \
     --checkpoint-path cz-en/checkpoints/checkpoint_best.pt \
+    --max-len 300 \
+    --bleu \
+    --reference sk-en/data/prepared/test.en
     --output cz-en/output/output_task3.txt \
     --max-len 300
