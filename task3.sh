@@ -5,7 +5,7 @@
 #SBATCH --mem=16GB
 #SBATCH --cpus-per-task=1
 #SBATCH --gpus=1
-#SBATCH --output=out_assignment1.out
+#SBATCH --output=out_task3.out
 
 module load gpu
 module load mamba
@@ -20,7 +20,7 @@ python translate.py \
     --tgt-tokenizer cz-en/tokenizers/en-bpe-8000.model \
     --checkpoint-path cz-en/checkpoints/checkpoint_best.pt \
     --max-len 300 \
+    --output cz-en/output/output_task3.txt \
     --bleu \
     --reference sk-en/data/prepared/test.en
-    --output cz-en/output/output_task3.txt \
-    --max-len 300
+
