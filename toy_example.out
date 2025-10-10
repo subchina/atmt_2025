@@ -1,0 +1,321 @@
+
+Filesystems usage for user andmat ( uid 646341628 ):
+-------------------------------------------------------------------------------------
+Directory                       Used   Limit   Used,%         Files     Limit
+-------------------------------------------------------------------------------------
+/home/andmat                    32KB    15GB     0.0%            36    100000
+/data/andmat                    11GB   200GB     5.3%         40215          
+/scratch/andmat                   0B    20TB     0.0%             1          
+
+/shares/atomt.pilot.s3it.uzh   1.4GB    10TB     0.0%            13          
+-------------------------------------------------------------------------------------
+
+Files on /scratch may be purged after 30 days.
+See https://docs.s3it.uzh.ch/cluster/data
+
+sentencepiece_trainer.cc(178) LOG(INFO) Running command: --input=./toy_example/data/raw/train.cz --model_prefix=cz-bpe-1000 --pad_id=3 --vocab_size=1000 --model_type=bpe --unk_piece=<unk> --bos_piece=<s> --eos_piece=</s> --pad_piece=<pad>
+sentencepiece_trainer.cc(78) LOG(INFO) Starts training with : 
+trainer_spec {
+  input: ./toy_example/data/raw/train.cz
+  input_format: 
+  model_prefix: cz-bpe-1000
+  model_type: BPE
+  vocab_size: 1000
+  self_test_sample_size: 0
+  character_coverage: 0.9995
+  input_sentence_size: 0
+  shuffle_input_sentence: 1
+  seed_sentencepiece_size: 1000000
+  shrinking_factor: 0.75
+  max_sentence_length: 4192
+  num_threads: 16
+  num_sub_iterations: 2
+  max_sentencepiece_length: 16
+  split_by_unicode_script: 1
+  split_by_number: 1
+  split_by_whitespace: 1
+  split_digits: 0
+  pretokenization_delimiter: 
+  treat_whitespace_as_suffix: 0
+  allow_whitespace_only_pieces: 0
+  required_chars: 
+  byte_fallback: 0
+  vocabulary_output_piece_score: 1
+  train_extremely_large_corpus: 0
+  seed_sentencepieces_file: 
+  hard_vocab_limit: 1
+  use_all_vocab: 0
+  unk_id: 0
+  bos_id: 1
+  eos_id: 2
+  pad_id: 3
+  unk_piece: <unk>
+  bos_piece: <s>
+  eos_piece: </s>
+  pad_piece: <pad>
+  unk_surface:  ⁇ 
+  enable_differential_privacy: 0
+  differential_privacy_noise_level: 0
+  differential_privacy_clipping_threshold: 0
+}
+normalizer_spec {
+  name: nmt_nfkc
+  add_dummy_prefix: 1
+  remove_extra_whitespaces: 1
+  escape_whitespaces: 1
+  normalization_rule_tsv: 
+}
+denormalizer_spec {}
+trainer_interface.cc(353) LOG(INFO) SentenceIterator is not specified. Using MultiFileSentenceIterator.
+trainer_interface.cc(185) LOG(INFO) Loading corpus: ./toy_example/data/raw/train.cz
+trainer_interface.cc(409) LOG(INFO) Loaded all 1000 sentences
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: <unk>
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: <s>
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: </s>
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: <pad>
+trainer_interface.cc(430) LOG(INFO) Normalizing sentences...
+trainer_interface.cc(539) LOG(INFO) all chars count=64563
+trainer_interface.cc(550) LOG(INFO) Done: 99.9535% characters are covered.
+trainer_interface.cc(560) LOG(INFO) Alphabet size=107
+trainer_interface.cc(561) LOG(INFO) Final character coverage=0.999535
+trainer_interface.cc(592) LOG(INFO) Done! preprocessed 1000 sentences.
+trainer_interface.cc(598) LOG(INFO) Tokenizing input sentences with whitespace: 1000
+trainer_interface.cc(609) LOG(INFO) Done! 5641
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=969 min_freq=3
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=307 size=20 all=2313 active=1592 piece=ou
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=182 size=40 all=3000 active=2279 piece=▁P
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=125 size=60 all=3676 active=2955 piece=▁A
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=96 size=80 all=4192 active=3471 piece=ka
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=77 size=100 all=4818 active=4097 piece=dě
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=77 min_freq=8
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=67 size=120 all=5274 active=1421 piece=du
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=56 size=140 all=5815 active=1962 piece=ick
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=48 size=160 all=6272 active=2419 piece=ad
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=44 size=180 all=6688 active=2835 piece=▁re
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=39 size=200 all=7037 active=3184 piece=ční
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=39 min_freq=7
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=35 size=220 all=7356 active=1298 piece=▁kter
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=32 size=240 all=7583 active=1525 piece=ít
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=27 size=260 all=7846 active=1788 piece=sa
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=25 size=280 all=8113 active=2055 piece=ved
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=22 size=300 all=8289 active=2231 piece=ek
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=22 min_freq=6
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=21 size=320 all=8523 active=1219 piece=stup
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=20 size=340 all=8741 active=1437 piece=skyt
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=19 size=360 all=8877 active=1573 piece=▁než
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=18 size=380 all=8998 active=1694 piece=▁stát
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=17 size=400 all=9178 active=1874 piece=▁tam
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=17 min_freq=5
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=16 size=420 all=9316 active=1138 piece=stav
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=15 size=440 all=9468 active=1290 piece=tel
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=14 size=460 all=9612 active=1434 piece=kou
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=14 size=480 all=9721 active=1543 piece=▁jejich
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=13 size=500 all=9871 active=1693 piece=▁Le
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=13 min_freq=5
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=12 size=520 all=9916 active=1038 piece=MA
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=12 size=540 all=10040 active=1162 piece=▁jin
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=11 size=560 all=10097 active=1219 piece=ke
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=11 size=580 all=10282 active=1404 piece=▁ru
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=10 size=600 all=10340 active=1462 piece=ké
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=10 min_freq=4
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=10 size=620 all=10457 active=1109 piece=anov
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=10 size=640 all=10543 active=1195 piece=▁musí
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=9 size=660 all=10670 active=1322 piece=▁Ž
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=9 size=680 all=10790 active=1442 piece=▁ov
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=9 size=700 all=10874 active=1526 piece=▁pož
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=9 min_freq=4
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=9 size=720 all=10911 active=1034 piece=▁svých
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=8 size=740 all=10988 active=1111 piece=jem
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=8 size=760 all=11092 active=1215 piece=▁lí
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=8 size=780 all=11169 active=1292 piece=▁hle
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=8 size=800 all=11214 active=1337 piece=▁také
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=8 min_freq=4
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=8 size=820 all=11248 active=1035 piece=▁JavaScript
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=7 size=840 all=11350 active=1137 piece=ene
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=7 size=860 all=11464 active=1251 piece=ždy
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=7 size=880 all=11527 active=1314 piece=nání
+trainer_interface.cc(687) LOG(INFO) Saving model: cz-bpe-1000.model
+trainer_interface.cc(699) LOG(INFO) Saving vocabs: cz-bpe-1000.vocab
+INFO:root:Trained SentencePiece model for cz with 1000 words
+sentencepiece_trainer.cc(178) LOG(INFO) Running command: --input=./toy_example/data/raw/train.en --model_prefix=en-bpe-1000 --pad_id=3 --vocab_size=1000 --model_type=bpe --unk_piece=<unk> --bos_piece=<s> --eos_piece=</s> --pad_piece=<pad>
+sentencepiece_trainer.cc(78) LOG(INFO) Starts training with : 
+trainer_spec {
+  input: ./toy_example/data/raw/train.en
+  input_format: 
+  model_prefix: en-bpe-1000
+  model_type: BPE
+  vocab_size: 1000
+  self_test_sample_size: 0
+  character_coverage: 0.9995
+  input_sentence_size: 0
+  shuffle_input_sentence: 1
+  seed_sentencepiece_size: 1000000
+  shrinking_factor: 0.75
+  max_sentence_length: 4192
+  num_threads: 16
+  num_sub_iterations: 2
+  max_sentencepiece_length: 16
+  split_by_unicode_script: 1
+  split_by_number: 1
+  split_by_whitespace: 1
+  split_digits: 0
+  pretokenization_delimiter: 
+  treat_whitespace_as_suffix: 0
+  allow_whitespace_only_pieces: 0
+  required_chars: 
+  byte_fallback: 0
+  vocabulary_output_piece_score: 1
+  train_extremely_large_corpus: 0
+  seed_sentencepieces_file: 
+  hard_vocab_limit: 1
+  use_all_vocab: 0
+  unk_id: 0
+  bos_id: 1
+  eos_id: 2
+  pad_id: 3
+  unk_piece: <unk>
+  bos_piece: <s>
+  eos_piece: </s>
+  pad_piece: <pad>
+  unk_surface:  ⁇ 
+  enable_differential_privacy: 0
+  differential_privacy_noise_level: 0
+  differential_privacy_clipping_threshold: 0
+}
+normalizer_spec {
+  name: nmt_nfkc
+  add_dummy_prefix: 1
+  remove_extra_whitespaces: 1
+  escape_whitespaces: 1
+  normalization_rule_tsv: 
+}
+denormalizer_spec {}
+trainer_interface.cc(353) LOG(INFO) SentenceIterator is not specified. Using MultiFileSentenceIterator.
+trainer_interface.cc(185) LOG(INFO) Loading corpus: ./toy_example/data/raw/train.en
+trainer_interface.cc(409) LOG(INFO) Loaded all 1000 sentences
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: <unk>
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: <s>
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: </s>
+trainer_interface.cc(425) LOG(INFO) Adding meta_piece: <pad>
+trainer_interface.cc(430) LOG(INFO) Normalizing sentences...
+trainer_interface.cc(539) LOG(INFO) all chars count=68233
+trainer_interface.cc(550) LOG(INFO) Done: 99.9531% characters are covered.
+trainer_interface.cc(560) LOG(INFO) Alphabet size=91
+trainer_interface.cc(561) LOG(INFO) Final character coverage=0.999531
+trainer_interface.cc(592) LOG(INFO) Done! preprocessed 1000 sentences.
+trainer_interface.cc(598) LOG(INFO) Tokenizing input sentences with whitespace: 1000
+trainer_interface.cc(609) LOG(INFO) Done! 4646
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=1468 min_freq=1
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=408 size=20 all=1857 active=1670 piece=▁o
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=248 size=40 all=2354 active=2167 piece=ro
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=148 size=60 all=2837 active=2650 piece=il
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=103 size=80 all=3324 active=3137 piece=ly
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=82 size=100 all=3759 active=3572 piece=▁with
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=81 min_freq=7
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=68 size=120 all=4028 active=1267 piece=▁r
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=60 size=140 all=4408 active=1647 piece=▁st
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=51 size=160 all=4700 active=1939 piece=▁are
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=43 size=180 all=5002 active=2241 piece=ice
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=38 size=200 all=5204 active=2443 piece=um
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=38 min_freq=6
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=34 size=220 all=5373 active=1145 piece=▁ac
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=32 size=240 all=5558 active=1330 piece=▁up
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=28 size=260 all=5761 active=1533 piece=▁ag
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=26 size=280 all=5941 active=1713 piece=ost
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=24 size=300 all=6083 active=1855 piece=▁pl
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=24 min_freq=5
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=22 size=320 all=6238 active=1149 piece=cis
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=20 size=340 all=6358 active=1269 piece=ft
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=19 size=360 all=6497 active=1408 piece=▁qu
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=18 size=380 all=6578 active=1489 piece=▁An
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=17 size=400 all=6665 active=1576 piece=na
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=17 min_freq=5
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=16 size=420 all=6750 active=1077 piece=ely
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=15 size=440 all=6836 active=1163 piece=og
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=15 size=460 all=6937 active=1264 piece=ouncil
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=14 size=480 all=7062 active=1389 piece=stem
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=13 size=500 all=7146 active=1473 piece=ine
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=13 min_freq=4
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=12 size=520 all=7227 active=1070 piece=che
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=12 size=540 all=7318 active=1161 piece=ating
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=11 size=560 all=7414 active=1257 piece=ily
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=11 size=580 all=7510 active=1353 piece=▁spe
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=10 size=600 all=7563 active=1406 piece=iz
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=10 min_freq=4
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=10 size=620 all=7677 active=1102 piece=ural
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=10 size=640 all=7725 active=1150 piece=▁every
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=9 size=660 all=7758 active=1183 piece=aug
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=9 size=680 all=7838 active=1263 piece=vent
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=9 size=700 all=7871 active=1296 piece=▁play
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=9 min_freq=4
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=9 size=720 all=7884 active=1011 piece=▁Community
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=8 size=740 all=7971 active=1098 piece=the
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=8 size=760 all=8031 active=1158 piece=▁200
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=8 size=780 all=8066 active=1193 piece=▁name
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=8 size=800 all=8069 active=1196 piece=▁public
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=8 min_freq=3
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=7 size=820 all=8106 active=1038 piece=arm
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=7 size=840 all=8176 active=1108 piece=▁Tr
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=7 size=860 all=8236 active=1168 piece=▁cam
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=7 size=880 all=8270 active=1202 piece=▁spec
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=7 size=900 all=8288 active=1220 piece=▁control
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=7 min_freq=3
+trainer_interface.cc(687) LOG(INFO) Saving model: en-bpe-1000.model
+trainer_interface.cc(699) LOG(INFO) Saving vocabs: en-bpe-1000.vocab
+INFO:root:Trained SentencePiece model for en with 1000 words
+INFO:root:Built a binary dataset for ./toy_example/data/raw/train.cz: 1000 sentences, 28939 tokens, 0.104% replaced by unknown token
+INFO:root:Built a binary dataset for ./toy_example/data/raw/valid.cz: 100 sentences, 2917 tokens, 0.000% replaced by unknown token
+INFO:root:Built a binary dataset for ./toy_example/data/raw/test.cz: 100 sentences, 3233 tokens, 0.031% replaced by unknown token
+INFO:root:Built a binary dataset for ./toy_example/data/raw/train.en: 1000 sentences, 26495 tokens, 0.113% replaced by unknown token
+INFO:root:Built a binary dataset for ./toy_example/data/raw/valid.en: 100 sentences, 2717 tokens, 0.074% replaced by unknown token
+INFO:root:Built a binary dataset for ./toy_example/data/raw/test.en: 100 sentences, 3074 tokens, 0.000% replaced by unknown token
+INFO:root:Data processing complete!
+Vocabulary saved to toy_example/tokenizers/cz-bpe-1000.vocab
+Vocabulary saved to toy_example/tokenizers/en-bpe-1000.vocab
+Commencing training!
+COMMAND: train.py --data toy_example/data/prepared/ --src-tokenizer toy_example/tokenizers/cz-bpe-1000.model --tgt-tokenizer toy_example/tokenizers/en-bpe-1000.model --source-lang cz --target-lang en --batch-size 32 --arch transformer --max-epoch 10 --log-file toy_example/logs/train.log --save-dir toy_example/checkpoints/ --ignore-checkpoints --encoder-dropout 0.1 --decoder-dropout 0.1 --dim-embedding 256 --attention-heads 4 --dim-feedforward-encoder 1024 --dim-feedforward-decoder 1024 --max-seq-len 100 --n-encoder-layers 3 --n-decoder-layers 3 --cuda
+Arguments: {'cuda': True, 'data': 'toy_example/data/prepared/', 'source_lang': 'cz', 'target_lang': 'en', 'src_tokenizer': 'toy_example/tokenizers/cz-bpe-1000.model', 'tgt_tokenizer': 'toy_example/tokenizers/en-bpe-1000.model', 'max_tokens': None, 'batch_size': 32, 'train_on_tiny': False, 'arch': 'transformer', 'max_epoch': 10, 'clip_norm': 4.0, 'lr': 0.0003, 'patience': 3, 'max_length': 300, 'log_file': 'toy_example/logs/train.log', 'save_dir': 'toy_example/checkpoints/', 'restore_file': 'checkpoint_last.pt', 'save_interval': 1, 'no_save': False, 'epoch_checkpoints': False, 'ignore_checkpoints': True, 'encoder_dropout': 0.1, 'decoder_dropout': 0.1, 'dim_embedding': 256, 'attention_heads': 4, 'dim_feedforward_encoder': 1024, 'dim_feedforward_decoder': 1024, 'max_seq_len': 100, 'n_encoder_layers': 3, 'n_decoder_layers': 3, 'encoder_embed_path': None, 'decoder_embed_path': None, 'seed': 588129939}
+Built a model with 6346472 parameters
+| Epoch 000:   0%|          | 0/32 [00:00<?, ?it/s]| Epoch 000:  19%|█▉        | 6/32 [00:02<00:08,  2.98it/s, loss=5.818, lr=0.0003, num_tokens=23.92, batch_size=32, grad_norm=33.03, clip=1]                                                                                                                                            Epoch 000: loss 5.492 | lr 0.0003 | num_tokens 29.49 | batch_size 31.25 | grad_norm 30.32 | clip 1
+Time to complete epoch 000 (training only): 3.80 seconds
+| Validating Epoch 000:   0%|          | 0/4 [00:00<?, ?it/s]                                                             Epoch 000: valid_loss 5.35 | num_tokens 27.2 | batch_size 100 | valid_perplexity 212 | BLEU 0.000
+| Epoch 001:   0%|          | 0/32 [00:00<?, ?it/s]| Epoch 001:  88%|████████▊ | 28/32 [00:02<00:00, 13.93it/s, loss=4.965, lr=0.0003, num_tokens=27.9, batch_size=31.14, grad_norm=23.59, clip=1]                                                                                                                                               Epoch 001: loss 4.927 | lr 0.0003 | num_tokens 29.49 | batch_size 31.25 | grad_norm 24.14 | clip 1
+Time to complete epoch 001 (training only): 2.31 seconds
+| Validating Epoch 001:   0%|          | 0/4 [00:00<?, ?it/s]                                                             Epoch 001: valid_loss 5.21 | num_tokens 27.2 | batch_size 100 | valid_perplexity 183 | BLEU 0.000
+| Epoch 002:   0%|          | 0/32 [00:00<?, ?it/s]| Epoch 002:  91%|█████████ | 29/32 [00:02<00:00, 14.21it/s, loss=4.58, lr=0.0003, num_tokens=24.07, batch_size=32, grad_norm=19.37, clip=1]                                                                                                                                            Epoch 002: loss 4.624 | lr 0.0003 | num_tokens 29.49 | batch_size 31.25 | grad_norm 22.54 | clip 1
+Time to complete epoch 002 (training only): 2.32 seconds
+| Validating Epoch 002:   0%|          | 0/4 [00:00<?, ?it/s]                                                             Epoch 002: valid_loss 5.08 | num_tokens 27.2 | batch_size 100 | valid_perplexity 160 | BLEU 0.000
+| Epoch 003:   0%|          | 0/32 [00:00<?, ?it/s]| Epoch 003:  81%|████████▏ | 26/32 [00:02<00:00, 12.75it/s, loss=4.424, lr=0.0003, num_tokens=24.31, batch_size=32, grad_norm=20.49, clip=1]                                                                                                                                             Epoch 003: loss 4.325 | lr 0.0003 | num_tokens 29.49 | batch_size 31.25 | grad_norm 24.14 | clip 1
+Time to complete epoch 003 (training only): 2.52 seconds
+| Validating Epoch 003:   0%|          | 0/4 [00:00<?, ?it/s]                                                             Epoch 003: valid_loss 4.93 | num_tokens 27.2 | batch_size 100 | valid_perplexity 138 | BLEU 0.000
+| Epoch 004:   0%|          | 0/32 [00:00<?, ?it/s]| Epoch 004:  88%|████████▊ | 28/32 [00:02<00:00, 13.62it/s, loss=4.052, lr=0.0003, num_tokens=26.05, batch_size=32, grad_norm=20.49, clip=1]                                                                                                                                             Epoch 004: loss 4.043 | lr 0.0003 | num_tokens 29.49 | batch_size 31.25 | grad_norm 23.97 | clip 1
+Time to complete epoch 004 (training only): 2.38 seconds
+| Validating Epoch 004:   0%|          | 0/4 [00:00<?, ?it/s]| Validating Epoch 004:  75%|███████▌  | 3/4 [00:04<00:01,  1.35s/it]                                                                     Epoch 004: valid_loss 4.8 | num_tokens 27.2 | batch_size 100 | valid_perplexity 121 | BLEU 0.026
+| Epoch 005:   0%|          | 0/32 [00:00<?, ?it/s]| Epoch 005:  84%|████████▍ | 27/32 [00:02<00:00, 13.15it/s, loss=3.794, lr=0.0003, num_tokens=29.37, batch_size=31.11, grad_norm=24.31, clip=1]                                                                                                                                                Epoch 005: loss 3.765 | lr 0.0003 | num_tokens 29.49 | batch_size 31.25 | grad_norm 24.42 | clip 1
+Time to complete epoch 005 (training only): 2.47 seconds
+| Validating Epoch 005:   0%|          | 0/4 [00:00<?, ?it/s]                                                             Epoch 005: valid_loss 4.72 | num_tokens 27.2 | batch_size 100 | valid_perplexity 112 | BLEU 0.000
+| Epoch 006:   0%|          | 0/32 [00:00<?, ?it/s]| Epoch 006:  84%|████████▍ | 27/32 [00:02<00:00, 13.17it/s, loss=3.535, lr=0.0003, num_tokens=30.05, batch_size=31.11, grad_norm=27.62, clip=1]                                                                                                                                                Epoch 006: loss 3.537 | lr 0.0003 | num_tokens 29.49 | batch_size 31.25 | grad_norm 26.82 | clip 1
+Time to complete epoch 006 (training only): 2.41 seconds
+| Validating Epoch 006:   0%|          | 0/4 [00:00<?, ?it/s]                                                             Epoch 006: valid_loss 4.64 | num_tokens 27.2 | batch_size 100 | valid_perplexity 104 | BLEU 0.000
+| Epoch 007:   0%|          | 0/32 [00:00<?, ?it/s]| Epoch 007:  81%|████████▏ | 26/32 [00:02<00:00, 12.91it/s, loss=3.29, lr=0.0003, num_tokens=30.47, batch_size=31.08, grad_norm=26.77, clip=1]                                                                                                                                               Epoch 007: loss 3.32 | lr 0.0003 | num_tokens 29.49 | batch_size 31.25 | grad_norm 26.61 | clip 1
+Time to complete epoch 007 (training only): 2.42 seconds
+| Validating Epoch 007:   0%|          | 0/4 [00:00<?, ?it/s]| Validating Epoch 007:  75%|███████▌  | 3/4 [00:04<00:01,  1.40s/it]                                                                     Epoch 007: valid_loss 4.62 | num_tokens 27.2 | batch_size 100 | valid_perplexity 101 | BLEU 0.001
+| Epoch 008:   0%|          | 0/32 [00:00<?, ?it/s]| Epoch 008:  88%|████████▊ | 28/32 [00:02<00:00, 13.93it/s, loss=3.122, lr=0.0003, num_tokens=26.43, batch_size=32, grad_norm=26.96, clip=0.9643]                                                                                                                                                  Epoch 008: loss 3.134 | lr 0.0003 | num_tokens 29.49 | batch_size 31.25 | grad_norm 29.85 | clip 0.9688
+Time to complete epoch 008 (training only): 2.29 seconds
+| Validating Epoch 008:   0%|          | 0/4 [00:00<?, ?it/s]| Validating Epoch 008: 100%|██████████| 4/4 [00:04<00:00,  1.10s/it]                                                                     Epoch 008: valid_loss 4.56 | num_tokens 27.2 | batch_size 100 | valid_perplexity 96 | BLEU 0.080
+| Epoch 009:   0%|          | 0/32 [00:00<?, ?it/s]| Epoch 009:  84%|████████▍ | 27/32 [00:02<00:00, 13.25it/s, loss=3.077, lr=0.0003, num_tokens=32.68, batch_size=31.11, grad_norm=30.27, clip=0.963]                                                                                                                                                    Epoch 009: loss 2.956 | lr 0.0003 | num_tokens 29.49 | batch_size 31.25 | grad_norm 28.1 | clip 0.9688
+Time to complete epoch 009 (training only): 2.37 seconds
+| Validating Epoch 009:   0%|          | 0/4 [00:00<?, ?it/s]| Validating Epoch 009: 100%|██████████| 4/4 [00:04<00:00,  1.17s/it]                                                                     Epoch 009: valid_loss 4.54 | num_tokens 27.2 | batch_size 100 | valid_perplexity 94.1 | BLEU 0.068
+Loading the best model for final evaluation on the test set
+Loaded checkpoint toy_example/checkpoints/checkpoint_last.pt
+| Evaluating:   0%|          | 0/100 [00:00<?, ?it/s]| Evaluating:  54%|█████▍    | 54/100 [00:02<00:01, 25.76it/s]| Evaluating:  54%|█████▍    | 54/100 [00:14<00:01, 25.76it/s]| Evaluating:  97%|█████████▋| 97/100 [00:14<00:00,  5.68it/s]                                                              Test set results: BLEU 0.108
+Final Test Set Results: BLEU 0.11
+[2025-10-09 17:57:06] COMMAND: translate.py --input toy_example/data/raw/test.cz --src-tokenizer toy_example/tokenizers/cz-bpe-1000.model --tgt-tokenizer toy_example/tokenizers/en-bpe-1000.model --checkpoint-path toy_example/checkpoints/checkpoint_best.pt --batch-size 1 --max-len 100 --output toy_example/toy_example_output.en --bleu --reference toy_example/data/raw/test.en
+[2025-10-09 17:57:06] Arguments: {'cuda': False, 'data': 'toy_example/data/prepared/', 'source_lang': 'cz', 'target_lang': 'en', 'src_tokenizer': 'toy_example/tokenizers/cz-bpe-1000.model', 'tgt_tokenizer': 'toy_example/tokenizers/en-bpe-1000.model', 'max_tokens': None, 'batch_size': 1, 'train_on_tiny': False, 'arch': 'transformer', 'max_epoch': 10, 'clip_norm': 4.0, 'lr': 0.0003, 'patience': 3, 'max_length': 300, 'log_file': 'toy_example/logs/train.log', 'save_dir': 'toy_example/checkpoints/', 'restore_file': 'checkpoint_last.pt', 'save_interval': 1, 'no_save': False, 'epoch_checkpoints': False, 'ignore_checkpoints': True, 'encoder_dropout': 0.1, 'decoder_dropout': 0.1, 'dim_embedding': 256, 'attention_heads': 4, 'dim_feedforward_encoder': 1024, 'dim_feedforward_decoder': 1024, 'max_seq_len': 100, 'n_encoder_layers': 3, 'n_decoder_layers': 3, 'encoder_embed_path': None, 'decoder_embed_path': None, 'seed': 42, 'input': 'toy_example/data/raw/test.cz', 'checkpoint_path': 'toy_example/checkpoints/checkpoint_best.pt', 'output': 'toy_example/toy_example_output.en', 'max_len': 100, 'bleu': True, 'reference': 'toy_example/data/raw/test.en'}
+[2025-10-09 17:57:06] Loaded a model from checkpoint toy_example/checkpoints/checkpoint_best.pt
+PAD ID: 3, BOS ID: 1, EOS ID: 2
+          PAD token: "<pad>", BOS token: "<s>", EOS token: "</s>"
+0it [00:00, ?it/s]1it [00:00,  7.82it/s]3it [00:00, 12.05it/s]5it [00:00,  4.61it/s]8it [00:01,  7.84it/s]11it [00:01, 11.14it/s]14it [00:01, 13.82it/s]16it [00:01, 14.06it/s]20it [00:01, 18.25it/s]23it [00:01, 18.45it/s]26it [00:02, 15.91it/s]28it [00:03,  5.76it/s]31it [00:03,  7.85it/s]34it [00:04,  3.92it/s]38it [00:06,  3.27it/s]40it [00:06,  3.74it/s]42it [00:06,  4.44it/s]44it [00:06,  5.29it/s]47it [00:07,  4.04it/s]53it [00:08,  7.50it/s]56it [00:08,  9.08it/s]59it [00:08, 10.01it/s]61it [00:08, 10.21it/s]63it [00:08,  8.90it/s]68it [00:10,  6.23it/s]70it [00:10,  7.00it/s]72it [00:10,  8.01it/s]74it [00:11,  3.81it/s]75it [00:12,  2.53it/s]76it [00:13,  2.85it/s]77it [00:13,  3.07it/s]78it [00:14,  1.88it/s]79it [00:14,  2.01it/s]81it [00:15,  3.03it/s]84it [00:15,  4.99it/s]86it [00:16,  2.93it/s]87it [00:16,  3.15it/s]88it [00:16,  3.62it/s]89it [00:17,  2.68it/s]90it [00:17,  3.26it/s]91it [00:19,  1.61it/s]92it [00:20,  1.22it/s]93it [00:20,  1.46it/s]96it [00:22,  1.73it/s]97it [00:24,  1.24it/s]99it [00:24,  1.90it/s]100it [00:24,  4.14it/s]
+[2025-10-09 17:57:30] Wrote 100 lines to toy_example/toy_example_output.en
+[2025-10-09 17:57:30] Translation completed in 24.18 seconds
+BLEU score: 0.28
