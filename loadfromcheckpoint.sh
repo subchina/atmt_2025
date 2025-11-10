@@ -16,7 +16,7 @@
 # rm -rf toy_example/data/prepared
 # rm -rf toy_example/tokenizers
 
-python train.py \
+python train_task2.py \
     --data toy_example/data/prepared/ \
     --src-tokenizer toy_example/tokenizers/cz-bpe-1000.model \
     --tgt-tokenizer toy_example/tokenizers/en-bpe-1000.model \
@@ -27,6 +27,7 @@ python train.py \
     --max-epoch 3 \
     --log-file toy_example/logs/train.log \
     --save-dir toy_example/checkpoints/ \
+    --epoch-checkpoints \
     --restore-file checkpoint_last.pt \
     --encoder-dropout 0.1 \
     --decoder-dropout 0.1 \
