@@ -56,7 +56,7 @@ python train.py \
 # TRANSLATE
 python translate.py \
     --cuda \
-    --input cz-en/data/raw/test.cz \
+    --input ~/shares/cz-en/data/raw/test.cz \
     --src-tokenizer cz-en/tokenizers/cz-bpe-8000.model \
     --tgt-tokenizer cz-en/tokenizers/en-bpe-8000.model \
     --checkpoint-path cz-en/checkpoints/checkpoint_best.pt \

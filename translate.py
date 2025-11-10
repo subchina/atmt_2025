@@ -62,15 +62,8 @@ def main(args):
     # make_batch = utils.make_batch_input(device='cuda' if args.cuda else 'cpu',
     #                                     pad=src_tokenizer.pad_id(),
     #                                     max_seq_len=args.max_len)
-
-    # Read input sentences
-    with open(args.input, encoding="utf-8") as f:
-        src_lines = [line.strip() for line in f if line.strip()]
-
-    # Encode input sentences
-    src_encoded = [torch.tensor(src_tokenizer.Encode(line, out_type=int)) for line in src_lines]
-    # trim to max_len
-    src_encoded = [s if len(s)<=args.max_len else s[:args.max_len] for s in src_encoded]
+    
+    
 
 
     # batch input sentences
@@ -86,6 +79,17 @@ def main(args):
     model.load_state_dict(state_dict['model'])
     logging.info('Loaded a model from checkpoint {:s}'.format(args.checkpoint_path))
 
+    # Read input sentences
+    with open(args.input, encoding="utf-8") as f:
+        src_lines = [line.strip() for line in f if line.strip()]
+
+    # Encode input sentences
+    src_encoded = [torch.tensor(src_tokenizer.Encode(line, out_type=int, add_eos=True)) for line in src_lines]
+    # trim to max_len
+    max_seq_len = min(model.encoder.pos_embed.size(1), args.max_len)
+    # src_encoded = [s[:max_seq_len] for s in src_encoded]
+    src_encoded = [s if len(s)<=max_seq_len else s[:max_seq_len] for s in src_encoded]
+
     DEVICE = 'cuda' if args.cuda else 'cpu'
     PAD = src_tokenizer.pad_id()
     BOS = tgt_tokenizer.bos_id()
@@ -93,28 +97,32 @@ def main(args):
     print(f'PAD ID: {PAD}, BOS ID: {BOS}, EOS ID: {EOS}\n\
           PAD token: "{src_tokenizer.IdToPiece(PAD)}", BOS token: "{tgt_tokenizer.IdToPiece(BOS)}", EOS token: "{tgt_tokenizer.IdToPiece(EOS)}"')
 
+    
+
     # Clear output file
     if args.output is not None:
         with open(args.output, 'w', encoding="utf-8") as out_file:
             out_file.write('')
 
-    def remove_pad(sent):
-        '''truncate the sentence if BOS is in it,
-        otherwise simply remove the padding tokens at the end'''
-        if type(sent) == torch.Tensor:
-            sent = sent.tolist()
-        if sent.count(EOS)>0:
-            sent = sent[0:sent.index(EOS)+1]
-        while sent and sent[-1] == PAD:
-            sent = sent[:-1]
-        return sent
+    def postprocess_ids(ids, pad, bos, eos):
+        """Remove leading BOS, truncate at first EOS, remove PADs."""
+        if isinstance(ids, torch.Tensor):
+            ids = ids.tolist()
+        # remove leading BOS if present
+        if len(ids) > 0 and ids[0] == bos:
+            ids = ids[1:]
+        # truncate at EOS (do not include EOS)
+        if eos in ids:
+            ids = ids[:ids.index(eos)]
+        # remove PAD tokens (typically trailing, but remove any)
+        ids = [i for i in ids if i != pad]
+        return ids
 
     def decode_sentence(tokenizer: spm.SentencePieceProcessor, sentence_ids):
-        'convert a tokenized sentence (a list of numbers) to a literal string'
-        if not isinstance(sentence_ids, list):
-            sentence_ids = sentence_ids.tolist()
-        sentence_ids = remove_pad(sentence_ids)
-        return "".join(tokenizer.Decode(sentence_ids, out_type=str))
+        """Convert token ids to a detokenized string using the target tokenizer."""
+        ids = postprocess_ids(sentence_ids, PAD, BOS, EOS)
+        # Use tokenizer.Decode to produce properly detokenized text
+        return tokenizer.Decode(ids)
     
 
     translations = []
@@ -161,7 +169,7 @@ def main(args):
                 with open(args.output, 'a', encoding="utf-8") as out_file:
                     out_file.write(translation + '\n')
     #------------------------------------------
-    
+    print(f"translations: {translations}")
     logging.info(f'Wrote {len(translations)} lines to {args.output}')
     end_time = time.perf_counter()
     logging.info(f'Translation completed in {end_time - start_time:.2f} seconds')
