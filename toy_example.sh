@@ -44,6 +44,7 @@ python train.py \
     --max-epoch 10 \
     --log-file toy_example/logs/train.log \
     --save-dir toy_example/checkpoints/ \
+    --epoch-checkpoints \
     --ignore-checkpoints \
     --encoder-dropout 0.1 \
     --decoder-dropout 0.1 \
