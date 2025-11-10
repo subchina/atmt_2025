@@ -169,7 +169,7 @@ def main(args):
     make_batch = utils.make_batch_input(device=device, pad=src_tokenizer.pad_id(), max_seq_len=args.max_seq_len)
 
     if last_epoch > 0:
-        end_epoch = last_epoch + 3
+        end_epoch = last_epoch + 1
     else:
         end_epoch = args.max_epoch
     
