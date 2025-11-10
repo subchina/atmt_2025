@@ -31,6 +31,18 @@ def average_checkpoints(args, model, last_n=4):
         return model
 
     ckpts = [f for f in os.listdir(ckpt_dir) if f.endswith(".pt") and "checkpoint" in f]
+    
+    numbered_ckpts = []
+    for f in ckpts:
+        match = re.search(r"checkpoint(\d+)_", f)
+        if match:
+            epoch_num = int(match.group(1))
+            numbered_ckpts.append((epoch_num, f))
+
+    if len(numbered_ckpts) == 0:
+        logging.warning("No numbered checkpoints found for averaging.")
+        return model
+    
     if len(ckpts) == 0:
         logging.warning("No checkpoints found for averaging.")
         return model
