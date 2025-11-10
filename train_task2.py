@@ -42,14 +42,10 @@ def average_checkpoints(args, model, last_n=4):
     if len(numbered_ckpts) == 0:
         logging.warning("No numbered checkpoints found for averaging.")
         return model
-    
-    if len(ckpts) == 0:
-        logging.warning("No checkpoints found for averaging.")
-        return model
 
     # Sort by epoch number
-    ckpts.sort(key=lambda x: int(x.split('_')[0].replace('checkpoint', '')))
-    ckpts_to_avg = ckpts[-last_n:]
+    numbered_ckpts.sort(key=lambda x: int(x.split('_')[0].replace('checkpoint', '')))
+    ckpts_to_avg = numbered_ckpts[-last_n:]
 
     avg_state_dict = None
     for ckpt_file in ckpts_to_avg:
