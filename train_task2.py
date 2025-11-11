@@ -23,7 +23,7 @@ from seq2seq.models import ARCH_MODEL_REGISTRY, ARCH_CONFIG_REGISTRY
 SEED = random.randint(1, 1_000_000_000)
 
 
-def average_checkpoints(args, model, last_n=4):
+def average_checkpoints(args, model, n):
     """Average the last N saved checkpoints in args.save_dir."""
     ckpt_dir = args.save_dir
     if not os.path.exists(ckpt_dir):
