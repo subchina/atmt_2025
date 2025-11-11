@@ -115,14 +115,6 @@ def get_args():
     return args
 
 
-def average_checkpoints(args, model, n):
-    ckpt_dir = args.save_dir
-    if not os.path.exists(ckpt_dir):
-        logging.warning("Checkpoint directory does not exist, skipping averaging.")
-        return model
-
-
-
 def main(args):
     """ Main training function. Trains the translation model over the course of several epochs, including dynamic
     learning rate adjustment and gradient clipping. """
