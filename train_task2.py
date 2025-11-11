@@ -160,7 +160,7 @@ def main(args):
     make_batch = utils.make_batch_input(device=device, pad=src_tokenizer.pad_id(), max_seq_len=args.max_seq_len)
 
     if last_epoch > 0:
-        end_epoch = last_epoch + 1
+        end_epoch = last_epoch + 4
     else:
         end_epoch = args.max_epoch
     
@@ -248,7 +248,7 @@ def main(args):
             logging.info('No validation set improvements observed for {:d} epochs. Early stop!'.format(args.patience))
             break
     
-    model = average_checkpoints(args, model, n=4)
+    model = average_checkpoints(args, model, n=3)
 
     # Final evaluation on the test set
     test_dataset = load_data(split='test')
