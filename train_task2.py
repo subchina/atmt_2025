@@ -31,15 +31,12 @@ def average_checkpoints(args, model, n):
         return model
 
     ckpts = [f for f in os.listdir(ckpt_dir) if f.endswith(".pt") and "checkpoint" in f]
-    print(ckpts)
     
     numbered_ckpts = []
     for f in ckpts:
-        match = re.search(r"checkpoint(\d+)_", f)
-        if match:
-            epoch_num = int(match.group(1))
-            numbered_ckpts.append((epoch_num, f))
-    print(numbered_ckpts)
+        epoch_str = f.split('_')[0].replace('checkpoint', '')
+        if epoch_str.isdigit():
+            numbered_ckpts.append((int(epoch_str), f))
     
     if len(numbered_ckpts) == 0:
         logging.warning("No numbered checkpoints found for averaging.")
@@ -54,7 +51,6 @@ def average_checkpoints(args, model, n):
         ckpt_path = os.path.join(ckpt_dir, ckpt_file)
         checkpoint = torch.load(ckpt_path, map_location='cpu')
         state_dict = checkpoint['model']
-        print(state_dict)
         if avg_state_dict is None:
             avg_state_dict = {k: v.clone() for k, v in state_dict.items()}
         else:
@@ -64,11 +60,8 @@ def average_checkpoints(args, model, n):
     for k in avg_state_dict:
         avg_state_dict[k] /= len(ckpts_to_avg)
 
-    print(avg_state_dict)
 
-    print(model)
     model.load_state_dict(avg_state_dict)
-    print(model)
     logging.info(f"Averaged {len(ckpts_to_avg)} checkpoints for final model.")
     return model
 
