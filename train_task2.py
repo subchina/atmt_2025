@@ -31,20 +31,23 @@ def average_checkpoints(args, model, n):
         return model
 
     ckpts = [f for f in os.listdir(ckpt_dir) if f.endswith(".pt") and "checkpoint" in f]
-    
+
+    # Keep only numbered checkpoints and attach epoch number
     numbered_ckpts = []
     for f in ckpts:
         epoch_str = f.split('_')[0].replace('checkpoint', '')
         if epoch_str.isdigit():
-            numbered_ckpts.append((int(epoch_str), f))
-    
+            numbered_ckpts.append((int(epoch_str), f))  # (epoch, filename)
+
     if len(numbered_ckpts) == 0:
         logging.warning("No numbered checkpoints found for averaging.")
         return model
 
     # Sort by epoch number
-    numbered_ckpts.sort(key=lambda x: int(x.split('_')[0].replace('checkpoint', '')))
-    ckpts_to_avg = numbered_ckpts[-last_n:]
+    numbered_ckpts.sort(key=lambda x: x[0])
+
+    # Pick last N checkpoint filenames
+    ckpts_to_avg = [f for _, f in numbered_ckpts[-n:]]
 
     avg_state_dict = None
     for ckpt_file in ckpts_to_avg:
@@ -60,10 +63,10 @@ def average_checkpoints(args, model, n):
     for k in avg_state_dict:
         avg_state_dict[k] /= len(ckpts_to_avg)
 
-
     model.load_state_dict(avg_state_dict)
     logging.info(f"Averaged {len(ckpts_to_avg)} checkpoints for final model.")
     return model
+
 
 
 def get_args():
