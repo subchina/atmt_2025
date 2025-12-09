@@ -22,4 +22,4 @@ python translate.py \
     --max-len 300 \
     --output cz-en/output/output_ex05.txt \
     --bleu \
-    --reference sk-en/data/prepared/test.en
+    --reference cz-en/data/prepared/test.en
