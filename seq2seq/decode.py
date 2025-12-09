@@ -11,9 +11,12 @@ def decode(model: Seq2SeqModel, src_tokens: torch.Tensor, src_pad_mask: torch.Te
     PAD = tgt_tokenizer.pad_id()
     generated = torch.full((batch_size, 1), BOS, dtype=torch.long, device=device)
     finished = torch.zeros(batch_size, dtype=torch.bool, device=device)
+                      
+    max_len = model.decoder.pos_embed.size(1)                  
+                      
     for t in range(max_out_len):
         # Create target padding mask with correct batch dimension
-        max_len = model.decoder.pos_embed.size(1)
+        
         if generated.size(1) > max_len:
             generated = generated[:, :max_len]
         # Ensure trg_pad_mask has shape (batch_size, seq_len)
@@ -47,6 +50,9 @@ def beam_search_decode(model: Seq2SeqModel, src_tokens: torch.Tensor, src_pad_ma
     BOS, EOS, PAD = tgt_tokenizer.bos_id(), tgt_tokenizer.eos_id(), tgt_tokenizer.pad_id()
     # __QUESTION 1: what does this line set up and why is the beam represented this way?
     beams = [(torch.tensor([[BOS]], device=device), 0.0)]
+
+    max_len = model.decoder.pos_embed.size(1) 
+
     for _ in range(max_out_len):
         new_beams = []
         for seq, score in beams:
@@ -54,7 +60,7 @@ def beam_search_decode(model: Seq2SeqModel, src_tokens: torch.Tensor, src_pad_ma
                 new_beams.append((seq, score))
                 continue
             with torch.no_grad():
-                max_len = model.decoder.pos_embed.size(1)
+                
                 if seq.size(1) > max_len:
                     seq = seq[:, :max_len]
                 # __QUESTION 2: Why do we need to create trg_pad_mask here and how does it affect the model's predictions?
