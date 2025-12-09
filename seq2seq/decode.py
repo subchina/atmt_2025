@@ -53,6 +53,9 @@ def beam_search_decode(model: Seq2SeqModel, src_tokens: torch.Tensor, src_pad_ma
 
     max_len = model.decoder.pos_embed.size(1) 
 
+    with torch.no_grad():
+        encoder_output = model.encode(src_tokens, src_pad_mask)
+
     for _ in range(max_out_len):
         new_beams = []
         for seq, score in beams:
@@ -65,7 +68,7 @@ def beam_search_decode(model: Seq2SeqModel, src_tokens: torch.Tensor, src_pad_ma
                     seq = seq[:, :max_len]
                 # __QUESTION 2: Why do we need to create trg_pad_mask here and how does it affect the model's predictions?
                 trg_pad_mask = (seq == PAD)[:, None, None, :]
-                logits = model(src_tokens, src_pad_mask, seq, trg_pad_mask)[:, -1, :]
+                logits = model.decode(src_tokens, src_pad_mask, seq, trg_pad_mask)[:, -1, :]
                 # __QUESTION 3: Explain the purpose of applying log_softmax and selecting top-k tokens here.
                 log_probs = torch.nn.functional.log_softmax(logits, dim=-1)
                 topk_log_probs, topk_ids = log_probs.topk(beam_size, dim=-1)
